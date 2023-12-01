@@ -3,20 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RearrangedS282", "RearrangedS282/RearrangedS282.csproj", "{35FB73C9-194D-4B06-8327-9200CAF9BF7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RearrangedS282", "RearrangedS282\RearrangedS282.csproj", "{35FB73C9-194D-4B06-8327-9200CAF9BF7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrangementCreator", "ArrangementCreator\ArrangementCreator.csproj", "{867DDDCB-3096-4372-966E-EFDC2D67AC3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{35FB73C9-194D-4B06-8327-9200CAF9BF7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{35FB73C9-194D-4B06-8327-9200CAF9BF7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35FB73C9-194D-4B06-8327-9200CAF9BF7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35FB73C9-194D-4B06-8327-9200CAF9BF7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{867DDDCB-3096-4372-966E-EFDC2D67AC3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{867DDDCB-3096-4372-966E-EFDC2D67AC3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{867DDDCB-3096-4372-966E-EFDC2D67AC3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{867DDDCB-3096-4372-966E-EFDC2D67AC3F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {483348D4-BE37-4389-AAB7-04FA1AF74E0A}
 	EndGlobalSection
 EndGlobal
