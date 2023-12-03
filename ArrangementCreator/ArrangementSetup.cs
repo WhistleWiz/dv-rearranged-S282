@@ -15,7 +15,7 @@ namespace ArrangementCreator
 			Arrangement arrangement = new();
 
 			Console.WriteLine("Creating new arrangement...\n");
-			Console.Write("Arrangement name: ");
+			Console.WriteLine("Arrangement name:");
 			arrangement.Name = Console.ReadLine();
 
 			Console.WriteLine("\nFront bogie");
@@ -23,6 +23,17 @@ namespace ArrangementCreator
 
 			Console.WriteLine("\nRear bogie");
 			arrangement.RearBogie = BogieWizard();
+
+			Console.WriteLine("\nNumber of driver sets:");
+			int driverCount = ParseHelper.ParseInt(x => x >= 0, "Value needs to be a number >= 0!");
+
+			arrangement.DriverSets = new DriverWheelSet[driverCount];
+
+			for (int i = 0; i < driverCount; i++)
+			{
+				Console.WriteLine($"Driver set {i + 1}:");
+				arrangement.DriverSets[i] = DriverWizard();
+			}
 
 			Console.WriteLine("Complete!");
 			Console.ReadKey();
@@ -35,27 +46,43 @@ namespace ArrangementCreator
 			BogieWheelSet bogie = new();
 
 			Console.WriteLine("Position:");
+			bogie.Z = ParseHelper.ParseFloat(x => true, "Value needs to be a number!");
 
-			float z = ParseHelper.ParseFloat(x => true, "Value needs to be a number!");
-			Console.Write(new string(' ', Console.BufferWidth));
-			bogie.Z = z;
+			Console.WriteLine("\nNumber of wheels:");
+			bogie.Wheels = new AxleData[ParseHelper.ParseInt(x => x >= 0, "Value needs to be a number >= 0!")];
 
-			Console.WriteLine("Number of wheels:");
-
-			int count = ParseHelper.ParseInt(x => x >= 0, "Value needs to be a number >= 0!");
-			Console.Write(new string(' ', Console.BufferWidth));
-			bogie.Wheels = new AxleData[count];
-
-			for (int i = 0; i < count; i++)
+			for (int i = 0; i < bogie.Wheels.Length; i++)
 			{
-				Console.WriteLine($"Wheel {i + 1} position:");
-
-				z = ParseHelper.ParseFloat(x => true, "Value needs to be a number!");
-				Console.Write(new string(' ', Console.BufferWidth));
-				bogie.Wheels[i] = new() { Z = z };
+				Console.WriteLine($"\nWheel {i + 1} position:");
+				bogie.Wheels[i] = new() { Z = ParseHelper.ParseFloat(x => true, "Value needs to be a number!") };
 			}
 
 			return bogie;
+		}
+
+		private static DriverWheelSet DriverWizard()
+		{
+			DriverWheelSet driver = new();
+
+			Console.WriteLine("Position:");
+			driver.Z = ParseHelper.ParseFloat(x => true, "Value needs to be a number!");
+
+			Console.WriteLine("\nNumber of wheels:");
+			driver.Wheels = new WheelData[ParseHelper.ParseInt(x => x >= 1, "Value needs to be a number >= 1!")];
+
+			Console.WriteLine("\nWheel radius:");
+			driver.Radius = ParseHelper.ParseFloat(x => x > 0, "Value needs to be a number > 0!");
+
+			for (int i = 0; i < driver.Wheels.Length; i++)
+			{
+				Console.WriteLine($"\nWheel {i + 1} position:");
+				driver.Wheels[i] = new() { Z = ParseHelper.ParseFloat(x => true, "Value needs to be a number!") };
+			}
+
+			Console.WriteLine("\nHide valve gear:");
+			driver.HideValveGear = ParseHelper.ParseBool();
+
+			return driver;
 		}
 	}
 }

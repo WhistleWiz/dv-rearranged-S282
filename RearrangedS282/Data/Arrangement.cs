@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace RearrangedS282.Data
@@ -29,7 +28,7 @@ namespace RearrangedS282.Data
 		{
 			StringBuilder sb = new();
 
-			sb.Append(FrontBogie.Wheels.Length);
+			sb.Append(FrontBogie.Wheels.Length * 2);
 
 			if (DriverSets.Length == 0)
 			{
@@ -39,11 +38,11 @@ namespace RearrangedS282.Data
 			{
 				for (int i = 0; i < DriverSets.Length; i++)
 				{
-					sb.Append("-").Append(DriverSets[i].Wheels.Length);
+					sb.Append("-").Append(DriverSets[i].Wheels.Length * 2);
 				}
 			}
 
-			sb.Append("-").Append(RearBogie.Wheels.Length);
+			sb.Append("-").Append(RearBogie.Wheels.Length * 2);
 
 			return sb.ToString();
 		}
@@ -54,7 +53,7 @@ namespace RearrangedS282.Data
 
 			if (FrontBogie.Wheels.Length > 0)
 			{
-				sb.Append(FrontBogie.Wheels.Length);
+				sb.Append(FrontBogie.Wheels.Length).Append('\'');
 			}
 
 			for (int i = 0; i < DriverSets.Length; i++)
@@ -64,7 +63,7 @@ namespace RearrangedS282.Data
 
 			if (RearBogie.Wheels.Length > 0)
 			{
-				sb.Append(RearBogie.Wheels.Length);
+				sb.Append(RearBogie.Wheels.Length).Append('\'');
 			}
 
 			return sb.ToString();
@@ -93,7 +92,49 @@ namespace RearrangedS282.Data
 
 		public static Arrangement[] DefaultArrangements = new Arrangement[]
 		{
-
+			new()
+			{
+				Name = "Ten Wheeler",
+				FrontBogie = new()
+				{
+					Z = 5,
+					Wheels = new AxleData[]
+					{
+						new()
+						{
+							Z = 1
+						},
+						new()
+						{
+							Z = -1
+						}
+					}
+				},
+				RearBogie = new() { },
+				DriverSets = new DriverWheelSet[]
+				{
+					new()
+					{
+						Radius = 60,
+						Wheels = new WheelData[]
+						{
+							new()
+							{
+								Z = 2
+							},
+							new()
+							{
+								Z = 0
+							},
+							new()
+							{
+								Z = -2
+							}
+						},
+						HideValveGear = false
+					}
+				}
+			}
 		};
 	}
 }

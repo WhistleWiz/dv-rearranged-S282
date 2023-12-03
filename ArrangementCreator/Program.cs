@@ -11,6 +11,8 @@ namespace ArrangementCreator
 			bool doLoop = true;
 			List<Arrangement> arrangements = Arrangement.LoadArrangements().ToList();
 
+			arrangements.AddRange(Arrangement.DefaultArrangements);
+
 			Menu current;
 			Dictionary<string, Menu> menus = new();
 
@@ -55,6 +57,8 @@ namespace ArrangementCreator
 		internal static void PrintArrangement(Arrangement arrangement)
 		{
 			Console.WriteLine($"Arrangement: {arrangement.Name}");
+			Console.WriteLine($"Whyte: {arrangement.GetWhyteString()}");
+			Console.WriteLine($"UIC: {arrangement.GetUicString()}");
 
 			Console.WriteLine("\nFront bogie:");
 			PrintBogie(arrangement.FrontBogie);
